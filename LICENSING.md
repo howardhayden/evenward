@@ -1,35 +1,82 @@
-# Repository licensing
+# Licensing
 
-Evenward combines executable software, original educational and visual material, source-identifying design, and third-party components. Those categories are licensed separately.
+Copyright (c) 2026 Hayden Howard.
 
-## Software and mixed source files — MPL-2.0
+This repository is **source-available for noncommercial use**. It is not offered
+as open-source software because the public software license excludes commercial
+purposes.
 
-Unless a file carries a more specific notice, application source, avatar and environment engine code, components, domain logic, hooks, tests, scripts, package manifests, build configuration, and other technical source files are licensed under the [Mozilla Public License 2.0](LICENSE).
+Apply terms in this order:
 
-A source file that combines executable code with embedded instructional text, movement data, interface copy, or other authored content is treated as software under MPL-2.0. Modified MPL-covered files must remain available under MPL-2.0, while separate files in a larger work may use other compatible terms.
+1. an explicit notice in a file;
+2. a third-party or source-specific notice;
+3. this document and `LICENSE-MAP.json`;
+4. the default software license.
 
-## Standalone educational and visual material — CC BY-NC-SA 4.0
+## Original software — PolyForm-Noncommercial-1.0.0
 
-Unless a file carries a more specific notice, separately published original documentation, movement studies, illustrations, diagrams, authored learning material, and other non-software creative works are licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+Unless a narrower category below applies, original source code, stylesheets,
+configuration, tests, scripts, workers, code-defined schemas, code-embedded
+content or data, and generated executable software are licensed under the
+PolyForm Noncommercial License 1.0.0. The root `LICENSE` and
+`LICENSES/PolyForm-Noncommercial-1.0.0.txt` contain the complete terms.
 
-This Creative Commons license does not apply to software. Commercial reuse of this separately licensed material requires separate permission. A distributor may replace those materials and use the MPL-covered software under MPL-2.0.
+The public license grants no commercial-use permission. See
+`COMMERCIAL-LICENSE.md` for the repository policy summary.
 
-## Marks and source identity — reserved
+## Project-specific workflow implementation
 
-The names **Evenward** and **Evenward Regulation Studio**, project domains, logos, trade dress, and other source-identifying marks are not licensed as trademarks or service marks. Accurate descriptive and nominative use permitted by law remains unaffected.
+The default software license covers the copyrightable expression and
+implementation of:
+
+- the notice-direction-practice-observe regulation loop and pathway selection
+- movement, breathing, sensory, attention, pattern, and care sequences
+- avatar articulation, movement cadence, contact, secondary motion, and rendering behavior
+- environment, lighting, atmosphere, accessibility, symptom, and reduced-motion behavior
+- trainer lifecycle, state transitions, persistence boundaries, and educational presentation
+- the authored movement catalog, warnings, labels, visual studies, and test contracts
+
+This identification does not claim exclusive rights over abstract ideas,
+methods, systems, facts, or functionality that copyright law does not protect.
+
+## General-purpose coding functions
+
+No function inside a covered file becomes permissively licensed merely because
+it could be useful elsewhere. At introduction of this policy, **no original
+source file or function is licensed under MIT**.
+
+A future utility may receive a permissive exception only after extraction into
+a separate file or package, removal of project-specific workflow expression, an
+explicit `SPDX-License-Identifier: MIT` notice, independent tests, and an exact
+entry in `LICENSE-MAP.json`. See `PERMISSIVE-EXCEPTIONS.md`.
+
+## Separable original documentation and media — CC-BY-NC-SA-4.0
+
+Original prose, explanatory diagrams, and non-code figures in the paths listed
+in `LICENSE-MAP.json` are licensed under Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International. Software code,
+substantive code excerpts, code-embedded data, and executable definitions in a
+mixed file remain under `PolyForm-Noncommercial-1.0.0`. Third-party material retains its own terms.
+
+## Generated artifacts
+
+Generation does not erase source licenses. Executable bundles remain governed
+by the software terms for covered code; embedded documentation, media, fonts,
+and third-party components retain their source terms.
 
 ## Third-party material
 
-Third-party libraries, fonts, icons, quotations, reference material, and other incorporated works retain their own notices and terms. Their specific notices override this repository-level map. No license is granted to material for which the licensor lacks authority.
+Third-party packages, fonts, algorithms, icons, photographs, audio, datasets,
+and other materials are not relicensed. Their own notices control.
 
-## File-level priority
+## Earlier snapshots
 
-The most specific notice controls. A notice in a file or its containing directory overrides this map. Generated output follows the license of its source unless the output carries a different notice.
+This policy is prospective. It does not withdraw permissions already attached
+to earlier copies distributed under MIT or another license. It governs files as
+offered from the commit introducing this policy forward, subject to ownership,
+file history, and source-specific notices.
 
-## Contributions
+## Names and marks
 
-Unless agreed otherwise in writing, a contribution is offered under the license governing the affected material above. A contributor represents that they have the right to submit the contribution. Third-party material must retain its original notices and terms.
-
-## Effective revision
-
-This map applies to revisions committed on or after **August 24, 2026**. Earlier public revisions that contained no license did not grant reuse rights merely by being publicly accessible.
+No copyright license grants trademark, likeness, endorsement, or official-status
+rights. See `TRADEMARKS.md`.

@@ -100,3 +100,12 @@ Source, documentation, tests, and version history belong in this repository.
 - [Distribution](docs/DISTRIBUTION.md)
 - [Testing](docs/TESTING.md)
 - [Roadmap](docs/ROADMAP.md)
+
+## Licensing
+
+Evenward is **source-available for noncommercial use** under
+**PolyForm-Noncommercial-1.0.0**; commercial use requires a separate written license. Separable original documentation and media use **CC-BY-NC-SA-4.0**.
+No current source file or function has a permissive commercial-use exception.
+See [`LICENSING.md`](LICENSING.md),
+[`WORKFLOW-BOUNDARIES.md`](WORKFLOW-BOUNDARIES.md), and
+[`LICENSE-MAP.json`](LICENSE-MAP.json) for scope and historical limits.

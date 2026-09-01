@@ -67,11 +67,37 @@ keypress listener, or stored observation field. This does not prevent
 keyboard navigation: native controls remain reachable and operable through the
 browser’s standard focus and activation behavior.
 
+## Footwear care
+
+- Compatibility, preparation, contact, wait, completion, pause, cancel, and
+  recovery use native controls and literal text.
+- The canvas is presentation-only and hidden from assistive technology. One
+  immutable semantic care snapshot supplies stage, shoe, region, tool, contact,
+  modeled value, motion mode, availability, next actions, and recovery in the
+  DOM. Renderer capability and renderer-failure acknowledgement are separate
+  from that revision; full multi-consumer parity remains blocked.
+- Selected targets and motion modes use text, shape, borders, and
+  `aria-pressed`; they do not depend on gloss or color.
+- Normal, Reduced, and Still share the same semantic event sequence. System or
+  application reduced motion releases active contact before changing the
+  presented mode.
+- Care progress requires explicit semantic contact actions. Rubbing, dragging,
+  hovering, timing an animation, or matching the demonstrated cadence is never
+  an input requirement.
+- Polite announcements occur only after explicit semantic transitions;
+  contact-loss and transition rejection use assertive alerts.
+- The stable primary action remains focusable when gated with `aria-disabled`,
+  and restart does not key-remount the Care component. These are reference
+  mechanisms, not executed focus or assistive-technology evidence.
+
 ## Verification limits
 
-Automated tests cover semantics, keyboard-compatible controls, disclosure
+Automated tests cover semantics, native keyboard-compatible control markup, disclosure
 state, modal structure, reduced-motion behavior, movement adaptation, and
 Patterns input boundaries.
+
+The footwear UI checks are server-rendered structure checks, not browser input,
+focus, timing, live-region, WebGL, or assistive-technology interaction evidence.
 
 Manual review is still required for:
 
@@ -80,3 +106,6 @@ Manual review is still required for:
 - contrast at zoom and text-spacing overrides;
 - every clothing, hair, support, body-shape, view, and movement combination;
 - movement accuracy and clarity.
+- the complete Care path with screen readers, voice control, switch hardware,
+  200%/400% zoom, text spacing, forced colors, touch, and context loss;
+- physical equality between the described and rendered care contact.

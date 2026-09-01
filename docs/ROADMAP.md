@@ -22,6 +22,21 @@ Before describing the trainer as production-ready:
 - review reduced-motion poses for equivalent instruction;
 - validate access filtering against all movement and support combinations.
 
+## Footwear and care replacement path
+
+- admit the signed care addendum into the canonical manifest and propagate it
+  through the complete register without granting implementation credit;
+- replace the unrated procedural shoe with hash-validated authored assets and the
+  complete region/material/resource ownership model;
+- implement the required raw/PMREM/near-field reflection, box projection,
+  finite-source glint, invalidation, atomic capture, and fidelity pipeline;
+- propagate authoritative footwear to every avatar and fallback consumer,
+  rather than treating the Care hero as the denominator;
+- complete physical contact, optical readback, device, performance,
+  accessibility, copy-comprehension, and independent-review evidence;
+- preserve the current reference source, failed tests, corrections, and zero
+  Verified/production-unlock status until those gates close.
+
 ## Privacy and resilience
 
 - keep the storage inventory synchronized with source;
@@ -42,6 +57,8 @@ Before describing the trainer as production-ready:
 ## Distribution
 
 - publish source and documentation on GitHub;
+- maintain the public `ShoeCareStudio` source repository under the
+  noncommercial license without representing it as a production release;
 - publish `/docs` through GitHub Pages;
 - connect `docs.evenward.rest`;
 - keep the application at `evenward.rest` on Neocities;
@@ -72,3 +89,5 @@ Before describing the trainer as production-ready:
 - stable privacy inventory and release audit;
 - documented usability findings;
 - graphics no longer described as in progress.
+- no unresolved footwear authority, full-denominator, optical, physical,
+  accessibility, performance, or evidence blocker.

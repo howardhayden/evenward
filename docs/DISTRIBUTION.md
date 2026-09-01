@@ -10,6 +10,7 @@ identity:
 | `evenward.rest` | Application on Neocities |
 | `docs.evenward.rest` | Documentation through GitHub Pages |
 | `github.com/howardhayden/evenward` | Source, tests, issues, and version history |
+| `github.com/howardhayden/ShoeCareStudio` | Public noncommercial pre-production footwear-care reference source and evidence |
 | `evenward.neocities.org` | Neocities-native discovery address |
 
 The independent domain preserves product identity if the underlying host

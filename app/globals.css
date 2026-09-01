@@ -914,10 +914,12 @@ h2 {
   box-shadow: 0 3px 0 color-mix(in srgb, var(--accent-strong) 72%, transparent);
 }
 
-.primary-button:disabled {
+.primary-button:disabled,
+.primary-button[aria-disabled="true"] {
   color: var(--muted);
   background: var(--surface-soft);
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 .access-message {
@@ -1031,7 +1033,7 @@ h2 {
 
 .app-nav__items {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0.15rem;
 }
 
@@ -4836,6 +4838,11 @@ summary:focus-visible {
 .cadence-app .movement-caption,
 .cadence-app .evidence-card,
 .cadence-app .chess-layout,
+.cadence-app .care-visual-card,
+.cadence-app .care-control-card,
+.cadence-app .care-settings,
+.cadence-app .care-description,
+.cadence-app .care-boundary,
 .cadence-app .sheet {
   background:
     linear-gradient(
@@ -4879,7 +4886,9 @@ summary:focus-visible {
 .cadence-app .movement-card button,
 .cadence-app .session-controls button,
 .cadence-app .regenerate-button,
-.cadence-app .outcome-grid button {
+.cadence-app .outcome-grid button,
+.cadence-app .care-secondary-button,
+.cadence-app .care-segmented button {
   background:
     linear-gradient(
       180deg,
@@ -5569,4 +5578,569 @@ summary:focus-visible {
 
 .trainer[data-demonstration-engine="articulated"][data-reduced-presentation="true"] .trainer__shoe--right {
   transform: var(--right-foot-pose) !important;
+}
+
+/* Leather footwear care reference. Semantic state and controls remain in the
+   DOM; the WebGL canvas is a visual consumer, never the source of care truth. */
+
+.care-studio {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.6rem);
+  width: 100%;
+}
+
+.care-studio__intro {
+  display: grid;
+  gap: 1rem;
+  align-items: end;
+}
+
+.care-studio__intro h1 {
+  max-width: 18ch;
+}
+
+.care-studio__intro .lede {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.care-boundary {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.care-boundary strong {
+  font-size: 0.9rem;
+}
+
+.care-boundary span {
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.care-wayfinder {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.care-wayfinder li {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.8rem;
+  padding: 0.45rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.care-wayfinder li > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.care-wayfinder li[data-stage-state="past"] {
+  color: var(--ink);
+}
+
+.care-wayfinder li[data-stage-state="optional-unrecorded"] {
+  color: var(--muted);
+  border-style: dashed;
+}
+
+.care-wayfinder li[data-stage-state="current"] {
+  color: var(--accent-strong);
+  font-weight: 700;
+  background: var(--accent-soft);
+  border-width: 2px;
+}
+
+.care-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.care-visual-card,
+.care-control-card,
+.care-settings,
+.care-description {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+}
+
+.care-visual-card {
+  align-self: start;
+  overflow: hidden;
+}
+
+.care-visual-card > [data-footwear-renderer] {
+  min-height: clamp(20rem, 56vw, 32rem) !important;
+  border-radius: 0 !important;
+}
+
+.care-visual-card canvas {
+  min-height: clamp(20rem, 56vw, 32rem) !important;
+}
+
+.care-visual-card__caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  padding: 0.8rem 1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  border-top: 1px solid var(--line);
+}
+
+.care-control-card {
+  display: grid;
+  align-content: start;
+  overflow: hidden;
+}
+
+.care-status-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid var(--line);
+}
+
+.care-status-row > div {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+  padding: 0.75rem 0.85rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.care-status-row > div:nth-child(2n) {
+  border-right: 0;
+}
+
+.care-status-row span,
+.care-setting-group > span {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.care-status-row strong {
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.care-instruction,
+.care-step-panel {
+  padding: 1rem;
+}
+
+.care-primary-action-slot {
+  padding: 0 1rem 1rem;
+}
+
+.care-primary-action-slot .primary-button {
+  width: 100%;
+}
+
+.care-instruction {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.care-instruction h2 {
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+}
+
+.care-instruction p,
+.care-step-panel p,
+.care-settings p,
+.care-description p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.care-modeled-notice {
+  padding: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem !important;
+  background: var(--surface-soft);
+  border-left: 0.25rem solid var(--accent);
+  border-radius: 0.25rem 0.7rem 0.7rem 0.25rem;
+}
+
+.care-recovery {
+  overflow-wrap: anywhere;
+}
+
+.care-step-panel {
+  display: grid;
+  gap: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.care-step-panel fieldset {
+  display: grid;
+  gap: 0.7rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.care-step-panel legend {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.care-step-panel fieldset label,
+.care-check-row {
+  display: grid;
+  grid-template-columns: 1.35rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.care-step-panel input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--accent-strong);
+}
+
+.care-completion-report {
+  display: grid;
+  gap: 0.75rem;
+  overflow-x: auto;
+}
+
+.care-completion-report table {
+  width: 100%;
+  min-width: 28rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.care-completion-report caption {
+  padding-bottom: 0.45rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.care-completion-report :is(th, td) {
+  padding: 0.55rem;
+  border: 1px solid var(--line);
+}
+
+.care-unavailable {
+  display: grid;
+  gap: 0.45rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.care-unavailable > label {
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.care-unavailable > div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.care-unavailable select {
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.65rem 0.75rem;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  background: var(--surface-solid);
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.care-action-grid {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.care-secondary-button,
+.care-segmented button {
+  min-height: 3rem;
+  padding: 0.65rem 0.8rem;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 650;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.care-secondary-button:disabled,
+.care-segmented button:disabled {
+  color: var(--muted);
+  opacity: 0.62;
+}
+
+.care-secondary-button--danger {
+  border-color: color-mix(in srgb, #a13737 60%, var(--line));
+}
+
+.care-alert,
+.care-release-note {
+  margin: 0 1rem 1rem;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  background: var(--surface-solid);
+  border: 2px solid #a13737;
+  border-radius: 0.8rem;
+}
+
+.care-settings,
+.care-description {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.care-settings h2,
+.care-description h2 {
+  font-size: clamp(1.25rem, 4vw, 1.65rem);
+}
+
+.care-setting-group {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.care-setting-group > legend {
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.care-segmented {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.care-segmented button {
+  display: grid;
+  align-content: center;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.care-segmented button[aria-pressed="true"] {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border: 2px solid var(--accent-strong);
+}
+
+.care-segmented small {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.care-segmented--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.care-description {
+  grid-template-columns: minmax(11rem, 0.35fr) minmax(0, 1fr);
+  align-items: start;
+}
+
+.care-still-controls {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+}
+
+.care-still-controls p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.care-run-controls {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.care-release-note {
+  margin: 0;
+}
+
+.cadence-app[data-low-vision="true"] .care-wayfinder li,
+.cadence-app[data-low-vision="true"] :is(
+  .care-visual-card,
+  .care-control-card,
+  .care-settings,
+  .care-description,
+  .care-boundary,
+  .care-secondary-button,
+  .care-segmented button
+) {
+  border-width: 2px;
+}
+
+.cadence-app[data-low-vision="true"] :is(
+  .care-instruction p,
+  .care-step-panel p,
+  .care-step-panel label,
+  .care-settings p,
+  .care-description p,
+  .care-still-controls p,
+  .care-secondary-button,
+  .care-segmented button
+) {
+  font-size: 1.05em;
+}
+
+.cadence-app[data-low-vision="true"] :is(
+  .care-modeled-notice,
+  .care-boundary strong,
+  .care-boundary span,
+  .care-visual-card__caption,
+  .care-status-row span,
+  .care-status-row strong,
+  .care-release-note
+) {
+  font-size: 1.05rem !important;
+  line-height: 1.6;
+}
+
+@media (max-width: 41.999rem) {
+  .care-wayfinder {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .care-wayfinder li,
+  .care-wayfinder li > span,
+  .care-description,
+  .care-description p {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .care-description {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 42rem) {
+  .care-studio__intro {
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.45fr);
+  }
+
+  .care-wayfinder {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .care-wayfinder li {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .care-status-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .care-status-row > div,
+  .care-status-row > div:nth-child(2n) {
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .care-status-row > div:last-child {
+    border-right: 0;
+  }
+
+  .care-unavailable > div,
+  .care-action-grid--split,
+  .care-run-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .care-run-controls > :last-child:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .care-segmented {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .cadence-app[data-care-view="true"] .app-main {
+    width: min(100%, 88rem);
+  }
+
+  .care-layout {
+    grid-template-columns: minmax(28rem, 1.15fr) minmax(24rem, 0.85fr);
+    align-items: start;
+  }
+
+  .care-visual-card {
+    position: sticky;
+    top: 5.25rem;
+  }
+
+  .care-settings {
+    grid-template-columns: minmax(14rem, 0.7fr) repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (forced-colors: active) {
+  .care-wayfinder li[data-stage-state="current"],
+  .care-segmented button[aria-pressed="true"] {
+    color: HighlightText;
+    background: Highlight;
+    border-color: Highlight;
+    forced-color-adjust: none;
+    opacity: 1;
+  }
+
+  .care-modeled-notice,
+  .care-alert,
+  .care-release-note {
+    border-color: CanvasText;
+  }
 }

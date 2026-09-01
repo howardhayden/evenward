@@ -2,10 +2,12 @@
 
 ## Information architecture
 
-Evenward exposes five primary areas:
+Evenward exposes six primary areas:
 
 - **Today:** choose a direction and begin a short thread.
 - **Practice:** browse activities directly.
+- **Care:** follow a literal, user-advanced footwear-care reference after
+  explicit material, product-label, and hidden-area confirmations.
 - **Chess:** play a saved, unclocked game.
 - **Patterns:** inspect and clear the data boundary.
 - **Learn:** browse movement disciplines and activate one repeating trainer
@@ -86,6 +88,9 @@ afterthoughts.
 - One clear primary action per region.
 - Reversible choices and visible deletion.
 - No hidden capture on Patterns.
+- Care controls never trigger the trainer's ambient reaction handler.
+- Contact must be released before target, stage, motion, pause, cancel, or
+  route changes commit.
 - No penalty for pausing, repetition, changing direction, or leaving.
 - Personality details never block task completion.
 
@@ -95,3 +100,9 @@ The interface structure is substantially more mature than the trainer art.
 Movement graphics, seated/profile geometry, support contact, garment occlusion,
 and secondary motion require further design and validation. See
 [Graphics status](GRAPHICS.md).
+
+The Care surface is deliberately operative rather than Catalysis-styled while
+contact, product compatibility, order, wait, consequence, recovery, and safety
+copy remain unverified by the complete linguistic-register gate. Its 3D shoe is
+an unrated procedural reference, not the production inspection surface or a
+presented fidelity tier.

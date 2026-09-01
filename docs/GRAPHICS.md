@@ -9,6 +9,12 @@ adaptation, layering, directionality, and repeating demonstrations. It is not
 production-finished illustration and must not be treated as authoritative
 movement instruction.
 
+The Care route adds a separate procedural Three.js shoe reference. It has
+distinct toe, heel, side, flex, seam/welt, and sole geometry; neutral-black
+dielectric material ownership; a local calibration hall; and explicit
+hand/tool contact motion. It is presented as unrated and unverified, not as a
+replacement for the trainer's legacy shoe strokes or as production footwear.
+
 ## Implemented foundation
 
 - front, profile, seated, and grounded floor configurations;
@@ -36,6 +42,16 @@ movement instruction.
 - Natural-fiber texture requires more visible, consistent treatment without
   increasing blur.
 - The movement catalog requires review by qualified practitioners.
+- No authored footwear mesh, macro/micro texture set, or resource manifest is
+  present.
+- The reference renderer does not implement the required separate raw-mip-0,
+  PMREM, SSR/confidence, box-projection, finite-source-glint, and atomic
+  two-shoe capture pipeline.
+- Full-avatar, compact, peer, seated, profile, fallback, and other shoe
+  consumers still use legacy two-dimensional strokes.
+- No measured physical contact, production optical measurement, device,
+  performance, or independent visual evidence has been admitted. The local
+  fail-closed capability sentinel is not optical-conformance evidence.
 
 ## Quality gates
 

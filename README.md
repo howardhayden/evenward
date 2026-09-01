@@ -28,11 +28,25 @@ secondary motion, and cross-browser rendering still require systematic visual
 review and subject-matter review. The trainer must not be treated as an
 authoritative form reference in its current state.
 
+Evenward also contains a reachable, pre-production leather-care reference. It
+provides a fail-closed semantic care
+state machine, literal compatibility and safety copy, memory-only modeled
+values, and an unrated procedural Three.js shoe. It has zero production-compliance
+credit. Authored footwear assets, the complete optical pipeline, device and
+assistive-technology evidence, physical contact validation, and the full
+trainer-footwear denominator remain release blockers.
+
+The author has approved source integration and a separate public
+`ShoeCareStudio` repository under the noncommercial license. Public source and
+a main-branch merge do not change the zero-Verified production lock.
+
 ## Experience
 
 - **Today** begins with a user-selected direction rather than an inferred state.
 - **Practice** offers movement, breathing, sensory, focus, and pattern
   activities directly.
+- **Care** exposes a literal, interruptible reference sequence for confirmed
+  black smooth finished leather and one registered product profile.
 - **Chess** provides a bounded-attention game with browser-saved progress.
 - **Patterns** explains storage and offers deletion controls without collecting
   observations or keyboard input.
@@ -65,6 +79,7 @@ directly in VSCodium.
 | `npm run lint` | Run ESLint |
 | `npm run typecheck` | Run strict TypeScript checking |
 | `npm run test:unit` | Run behavior, privacy, persistence, accessibility, and visual-contract tests |
+| `npm run test:footwear` | Check the footwear register for staleness and run focused care, rendering-contract, copy, and gate tests |
 | `npm test` | Build and run all automated tests |
 | `npm run check` | Run lint, type checking, build, and tests |
 
@@ -77,10 +92,12 @@ directly in VSCodium.
 | `app/components/avatar` | Articulated SVG trainer and attachment layers |
 | `app/components/ambient` | Decorative atmosphere and surface texture |
 | `app/components/chess` | Chess interaction, board themes, and pieces |
+| `app/components/care` | Care workflow and procedural footwear reference renderer |
 | `app/domain` | Typed content, movement rules, state, and persistence |
 | `app/hooks` | Trainer lifecycle and transition control |
 | `tests` | Behavior, semantic, privacy, and production-output checks |
 | `docs` | Product and engineering documentation |
+| `docs/footwear` | Candidate care authority, atomic register, red-team record, and evidence ledger |
 
 ## Distribution
 

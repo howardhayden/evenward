@@ -1,0 +1,58 @@
+{
+  "version": "1.1",
+  "generatedAt": "2026-09-01",
+  "claimBoundary": "pre-production reference register; zero Verified requirements",
+  "composition": [
+    {
+      "path": "requirements-v1.0-pre-redteam.jsonl",
+      "rowCount": 97,
+      "sha256": "efdf627b85e62de28c956ed659bfdd5ec4dc1d646e1c043d23efbedf9dee8ea9",
+      "disposition": "preserved failed pre-red-team baseline"
+    },
+    {
+      "path": "requirements-v1.1-redteam-delta.jsonl",
+      "rowCount": 28,
+      "sha256": "61973c8ccd9291248a1eb61903ce5260d71319476930127d9a17963abc6015a0",
+      "disposition": "additive adversarial corrections"
+    }
+  ],
+  "authorityPins": [
+    {
+      "source": "EVM-FOOTWEAR-1.0",
+      "pages": 20,
+      "sha256": "55f736db7b0bd2c6c32b97140c7d6400e03e2476a5deba2368168dcbf1905af9"
+    },
+    {
+      "source": "EVM-AVATAR-1.0",
+      "pages": 40,
+      "sha256": "f68e13d1d9bed87074454100229784b32827196738b25883661e9df63c5de647"
+    },
+    {
+      "source": "Evenward footwear care addendum v1.0 candidate",
+      "path": "evenward-footwear-care-addendum-v1.0-candidate.md",
+      "sha256": "ef73e7a6e2512950c21c938aa049acb4d5225fc91402f7c54f23e5e563244c39"
+    }
+  ],
+  "mutableCareReferences": [
+    {
+      "url": "https://saphir.com/products/amiral-gloss",
+      "accessedAt": "2026-09-01",
+      "authority": "named-product profile only; current label and warnings take precedence"
+    },
+    {
+      "url": "https://uk.saphir.com/pages/bulling-high-shine-guide-detail",
+      "accessedAt": "2026-09-01",
+      "authority": "supporting sequence reference only"
+    }
+  ],
+  "rowCount": 125,
+  "uniqueIdCount": 125,
+  "dependencyGraphAcyclic": true,
+  "statusCounts": {
+    "candidate-required": 86,
+    "inherited-blocker": 39
+  },
+  "verifiedCount": 0,
+  "productionUnlocked": false,
+  "currentRegisterSha256": "7bf94d867b567687c0e763f2570e4c8facb64e0bba4b6d39253af0a3bd896658"
+}

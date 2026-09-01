@@ -5,12 +5,14 @@
 Evenward is a React and Next.js application exported as static files. There is
 no application server, account system, database, or client-side data service.
 
-The architecture separates four concerns:
+The architecture separates five concerns:
 
 1. durable browser preferences;
 2. visit-only interaction state;
 3. declarative practice and movement content;
-4. visual execution by the trainer and interface.
+4. visual execution by the trainer and interface;
+5. visit-only footwear-care semantics separated from their non-authoritative
+   visual consumer.
 
 This keeps the application portable across static hosts and makes its privacy
 boundary inspectable in source.
@@ -26,15 +28,28 @@ boundary inspectable in source.
 | `app/domain/movement-logic.ts` | Compatibility and support selection |
 | `app/domain/persistence.ts` | The complete browser-storage boundary |
 | `app/domain/avatar-machine.ts` | Pure trainer behavior transitions |
+| `app/domain/footwear-care.ts` | Pure revision/run-bound care state, copy selectors, and finite semantic modeled controls |
+| `app/domain/footwear-material.ts` | Footwear-owned float32 roughness conversion and fidelity demand rules |
 | `app/hooks/use-avatar-controller.ts` | Timers, cancellation, and lifecycle-safe commands |
 | `app/components/avatar/Trainer.tsx` | SVG rig, clothing, coverings, supports, and interaction regions |
 | `app/components/studio/StudioUI.tsx` | Screens and user commands |
+| `app/components/care/ShoeCareStudio.tsx` | Reachable care controls and one-revision semantic accessible state; renderer capability remains separate |
+| `app/components/care/LeatherFootwearRenderer.tsx` | Unrated procedural WebGL visual consumer with explicit production blockers |
 
 ## State model
 
 Only appearance/access preferences and chess progress persist. Active
 practices, selected directions, lesson state, reflections, reactions, and
 temporary room figures remain in memory and disappear on reload.
+
+Footwear care also remains in memory only. Every event carries the expected
+revision and run identity; stale or cross-run events preserve the identical
+state. A run cannot advance from a timer, animation frame, pointer distance, or
+renderer callback. Boundary store actions retain an ordered in-memory
+`transitionTrace`; the shell mirrors its release-then-pause or release-then-mode
+sequence in care lifecycle metadata. Route exit releases contact first and then
+pauses the run. Framework batching is not treated as device-level visual-trace
+evidence.
 
 The trainer state machine distinguishes entering, directional walking, idle,
 transitioning, demonstrating, paused, reduced-motion, reacting, returning,
@@ -101,6 +116,26 @@ All fonts and application assets are included locally. Ambient scenes are
 decorative and generated in memory. Reduced-motion settings stop decorative
 loops and replace continuous instruction with user-advanced poses.
 
+## Footwear-care reference boundary
+
+Care owns compatibility confirmations, safe stage progression, selected shoe
+and rigid region, contact state, literal recovery, and four finite normalized
+modeled values. It does not own material masks or direct shader writes. The
+visual consumer creates distinct toe, heel, side, flex, seam/welt, and sole
+geometry, uses neutral-black dielectric materials, and receives all four
+modeled target values so toe and heel remain independent.
+
+The renderer is truthfully marked unrated and blocked. Its generated geometry,
+single local cube capture, point glint, and procedural contact tool exercise
+interfaces but do not supply authored assets, separate raw-mip and PMREM paths,
+box projection, confidence-weighted near-field reflection, production fidelity
+tiers, or physical/device evidence.
+
+The DOM description is derived from one immutable semantic revision. WebGL
+capability is a separate fail-closed consumer signal rather than a
+revision-acknowledged field, so a renderer callback cannot upgrade semantic
+availability and full request/ack parity remains a production blocker.
+
 ## Build and deployment
 
 `npm run build` produces a complete static export in `out/`. The same source is
@@ -121,5 +156,7 @@ Deployment boundaries:
 - Movement, clothing, support, and body-shape combinations have not completed
   exhaustive visual review.
 - Automated screenshot comparison is not yet implemented.
+- The Care renderer is an unrated procedural reference and cannot close any
+  production optical, authored-asset, whole-avatar, or device gate.
 - Browser storage can be unavailable in hardened contexts; the current visit
   still works, but selected preferences cannot persist.

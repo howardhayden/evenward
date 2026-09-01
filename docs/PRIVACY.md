@@ -15,6 +15,7 @@ tracking pixels, telemetry, health inference, or remote application logging.
 | Optional visit reflection | Memory only | Reload or immediate clear | Clear or reload |
 | Temporary room figures | Memory only | Regeneration, exit, or reload | Regenerate, exit, or reload |
 | Trainer interactions | Not retained | Immediate response only | No stored record |
+| Footwear-care run, target, contact, and modeled values | Memory only | Reload | Pause, cancel, restart, route exit, or reload |
 | Browser hour | Memory only | Periodically re-read | Not stored |
 
 The current storage keys are:
@@ -36,6 +37,8 @@ Evenward does not retain:
 - trainer interactions;
 - keyboard input;
 - temporary figure identities.
+- footwear material confirmations, selected shoe or region, care contact,
+  modeled values, and completion state after reload;
 
 The Patterns page explains this boundary and provides deletion controls. It
 does not ask the user to record a pattern.

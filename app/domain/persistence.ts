@@ -48,6 +48,11 @@ export const DATA_INVENTORY = [
     location: "Memory only",
     retention: "Discarded on reload",
   },
+  {
+    item: "Current leather-care run, target, stage, contact state, and modeled application progress",
+    location: "Memory only",
+    retention: "Discarded on reload",
+  },
 ] as const;
 
 const themes: ThemeName[] = ["forest", "sea", "sunrise"];
@@ -173,11 +178,40 @@ export function readLocalState(storage: Storage) {
 }
 
 export function writeAppearance(storage: Storage, preferences: AppearancePreferences) {
-  storage.setItem(STORAGE_KEYS.preferences, JSON.stringify(preferences));
+  const avatar: AvatarConfig = {
+    hair: preferences.avatar.hair,
+    garment: preferences.avatar.garment,
+    skin: preferences.avatar.skin,
+    headwear: preferences.avatar.headwear,
+    faithAccessory: preferences.avatar.faithAccessory,
+    glasses: preferences.avatar.glasses,
+    height: preferences.avatar.height,
+    weight: preferences.avatar.weight,
+    mobility: preferences.avatar.mobility,
+    support: preferences.avatar.support,
+    lowVision: preferences.avatar.lowVision,
+    hearingSupport: preferences.avatar.hearingSupport,
+    reducedMotion: preferences.avatar.reducedMotion,
+    playbackSpeed: preferences.avatar.playbackSpeed,
+    solidSurfaces: preferences.avatar.solidSurfaces,
+  };
+  const persisted: AppearancePreferences = {
+    theme: preferences.theme,
+    mode: preferences.mode,
+    scene: preferences.scene,
+    avatar,
+  };
+  storage.setItem(STORAGE_KEYS.preferences, JSON.stringify(persisted));
 }
 
 export function writeChess(storage: Storage, chess: SavedChess) {
-  storage.setItem(STORAGE_KEYS.chess, JSON.stringify(chess));
+  const persisted: SavedChess = {
+    pgn: chess.pgn,
+    boardTheme: chess.boardTheme,
+    completed: chess.completed,
+    finishedRecorded: chess.finishedRecorded,
+  };
+  storage.setItem(STORAGE_KEYS.chess, JSON.stringify(persisted));
 }
 
 export function clearChessStorage(storage: Storage) {

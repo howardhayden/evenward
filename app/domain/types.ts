@@ -2,7 +2,13 @@ export type ThemeName = "forest" | "sea" | "sunrise";
 export type ThemeMode = "light" | "dark";
 export type SceneName = "leaves" | "rain" | "waves" | "sky";
 export type ChoiceId = "settle" | "alert" | "focus" | "move" | "unsure";
-export type ViewId = "today" | "practice" | "chess" | "patterns" | "understand";
+export type ViewId =
+  | "today"
+  | "practice"
+  | "care"
+  | "chess"
+  | "patterns"
+  | "understand";
 export type OutcomeId = "settled" | "alert" | "focused" | "neutral";
 export type HairStyle = "crop" | "wave" | "coils" | "braid" | "long" | "bald";
 export type GarmentStyle = "movement" | "tunic" | "robe" | "loose" | "athletic";

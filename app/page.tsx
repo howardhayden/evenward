@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
 import { Chess, type PieceSymbol, type Square } from "chess.js";
 import type {
   AvatarConfig,
@@ -37,10 +37,19 @@ import {
   writeAppearance,
   writeChess,
 } from "./domain/persistence";
+import {
+  createInitialCareState,
+  type CareEvent,
+} from "./domain/footwear-care";
+import {
+  careStoreReducer,
+  createCareStore,
+} from "./domain/footwear-care-store";
 import { useAvatarController } from "./hooks/use-avatar-controller";
 import { AmbientScene, FilmSurface } from "./components/ambient/Atmosphere";
 import { Trainer } from "./components/avatar/Trainer";
 import { ChessStudio } from "./components/chess/ChessStudio";
+import { ShoeCareStudio } from "./components/care/ShoeCareStudio";
 import {
   AppNavigation,
   browserDaypart,
@@ -109,6 +118,24 @@ export default function Home() {
   const [daypart, setDaypart] = useState<Daypart | null>(null);
   const [pageHidden, setPageHidden] = useState(false);
   const [systemReducedMotion, setSystemReducedMotion] = useState(false);
+  const [careStore, dispatchCareStore] = useReducer(
+    careStoreReducer,
+    undefined,
+    () => createCareStore(createInitialCareState("care:0")),
+  );
+  const careState = careStore.state;
+  const dispatchCareEvent = useCallback(
+    (event: CareEvent) => dispatchCareStore({ kind: "event", event }),
+    [],
+  );
+  const dispatchRendererContactLoss = useCallback(
+    () => dispatchCareStore({ kind: "contact-loss-at-release" }),
+    [],
+  );
+  const dispatchCancelAtReleasedBoundary = useCallback(
+    () => dispatchCareStore({ kind: "cancel-at-release" }),
+    [],
+  );
   const reducedPresentation = avatar.reducedMotion || systemReducedMotion;
   const guide = useAvatarController(reducedPresentation);
 
@@ -142,15 +169,26 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const updateVisibility = () => setPageHidden(document.visibilityState !== "visible");
+    const updateVisibility = () => {
+      const hidden = document.visibilityState !== "visible";
+      setPageHidden(hidden);
+      if (hidden && view === "care") {
+        dispatchCareStore({ kind: "pause-at-release" });
+      }
+    };
     updateVisibility();
     document.addEventListener("visibilitychange", updateVisibility);
     return () => document.removeEventListener("visibilitychange", updateVisibility);
-  }, []);
+  }, [view]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateMotionPreference = () => setSystemReducedMotion(media.matches);
+    const updateMotionPreference = () => {
+      setSystemReducedMotion(media.matches);
+      if (media.matches) {
+        dispatchCareStore({ kind: "reduce-at-release" });
+      }
+    };
     updateMotionPreference();
     media.addEventListener("change", updateMotionPreference);
     return () => media.removeEventListener("change", updateMotionPreference);
@@ -164,6 +202,9 @@ export default function Home() {
         setMode(saved.preferences.mode);
         setScene(saved.preferences.scene);
         setAvatar(saved.preferences.avatar);
+        if (saved.preferences.avatar.reducedMotion) {
+          dispatchCareStore({ kind: "reduce-at-release" });
+        }
         setChessState(saved.chess);
       } catch {
         // Storage can be unavailable in hardened browser contexts. The in-memory
@@ -383,6 +424,9 @@ export default function Home() {
 
   const changeView = (next: ViewId) => {
     if (next !== "understand") stopLesson();
+    if (view === "care" && next !== "care") {
+      dispatchCareStore({ kind: "pause-at-release" });
+    }
     setView(next);
     window.scrollTo({ top: 0, behavior: reducedPresentation ? "auto" : "smooth" });
   };
@@ -417,10 +461,23 @@ export default function Home() {
       data-reduced-motion={reducedPresentation}
       data-solid-surfaces={avatar.solidSurfaces}
       data-page-hidden={pageHidden}
+      data-care-view={view === "care"}
+      data-care-transition-trace={
+        careStore.transitionTrace.length
+          ? careStore.transitionTrace
+              .map((entry) => `${entry.revision}:${entry.contact}:${entry.status}:${entry.presentedMotion}`)
+              .join(">")
+          : "none"
+      }
       onClickCapture={(event) => {
-        if (guide.state.mode !== "idle") return;
+        // Care interactions, including a navigation click that exits Care,
+        // must never leak into the unrelated guide-reaction channel.
+        if (view === "care" || guide.state.mode !== "idle") return;
         const target = event.target;
-        if (target instanceof Element && target.closest(".trainer-hit")) return;
+        if (
+          target instanceof Element &&
+          target.closest(".trainer-hit, [data-care-surface]")
+        ) return;
         guide.react("rightHand");
       }}
     >
@@ -456,7 +513,7 @@ export default function Home() {
             </div>
           </header>
 
-          <div className={`content-with-guide ${guideVisible ? "" : "content-with-guide--solo"}`}>
+          <div className={`content-with-guide ${guideVisible && view !== "care" ? "" : "content-with-guide--solo"}`}>
           <main id="main-content" className="app-main" tabIndex={-1}>
             {activeFlow ? (
               <SessionView
@@ -511,6 +568,16 @@ export default function Home() {
                     onClear={clearChess}
                   />
                 )}
+                {view === "care" && (
+                  <ShoeCareStudio
+                    state={careState}
+                    rejection={careStore.rejection}
+                    onEvent={dispatchCareEvent}
+                    onRendererContactLoss={dispatchRendererContactLoss}
+                    onCancelAtReleasedBoundary={dispatchCancelAtReleasedBoundary}
+                    motionReductionRequired={reducedPresentation}
+                  />
+                )}
                 {view === "patterns" && (
                   <PatternsView
                     notes={visitNotes}
@@ -532,7 +599,7 @@ export default function Home() {
               </>
             )}
           </main>
-          {!activeFlow && guideVisible && (
+          {!activeFlow && guideVisible && view !== "care" && (
             <GuidePresence
               avatar={avatar}
               guideState={guide.state}
@@ -581,7 +648,12 @@ export default function Home() {
           reaction={guide.state.reaction}
           guideVisible={guideVisible}
           onAvatarInteract={guide.react}
-          onChange={setAvatar}
+          onChange={(nextAvatar) => {
+            setAvatar(nextAvatar);
+            if (nextAvatar.reducedMotion) {
+              dispatchCareStore({ kind: "reduce-at-release" });
+            }
+          }}
           onReset={() => setAvatar(defaultAvatar)}
           onClose={() => setOpenPanel(null)}
         />

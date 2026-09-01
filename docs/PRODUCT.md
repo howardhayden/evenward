@@ -40,6 +40,7 @@ pause, change direction, or leave.
 | Pattern exercises | Noticing relationships without immediate interpretation |
 | Systems literacy | Clear explanations of choice, uncertainty, and evidence boundaries |
 | Trainer | Continuity, instruction, access adaptation, and responsive presence |
+| Care reference | Literal, interruptible material-care sequencing without physical-outcome inference |
 
 Chess belongs because it practices remaining with a position, not because the
 application assigns it a health effect. Literacy reduces helplessness by
@@ -95,6 +96,11 @@ Evenward is not:
 - a biomechanical evaluation tool;
 - a replacement for qualified movement instruction;
 - a social network or quantified-self platform.
+
+The footwear-care reference supports only explicitly confirmed black, smooth,
+finished leather and the registered Saphir Amiral Gloss profile. It does not
+identify a material, measure physical coverage, assess damage, certify a
+finish, or replace the maker's current directions and warnings.
 
 If a practice feels painful, destabilizing, or unsuitable, the user should
 stop. The application cannot evaluate individual safety.

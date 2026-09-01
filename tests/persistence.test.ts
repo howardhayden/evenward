@@ -3,6 +3,7 @@ import test from "node:test";
 import { defaultAvatar, defaultChess } from "../app/domain/content";
 import {
   clearAllEvenwardStorage,
+  DATA_INVENTORY,
   readLocalState,
   STORAGE_KEYS,
   writeAppearance,
@@ -97,4 +98,80 @@ test("temporary practice state has no persistence key and reset deletes all data
   assert.deepEqual(Object.keys(STORAGE_KEYS).sort(), ["chess", "preferences"]);
   clearAllEvenwardStorage(storage);
   assert.equal(storage.length, 0);
+});
+
+test("write boundaries discard injected leather-care fields and custom serializers", () => {
+  const storage = new MemoryStorage();
+  const injectedAppearance = {
+    theme: "sea",
+    mode: "dark",
+    scene: "sky",
+    avatar: {
+      ...defaultAvatar,
+      careAmount: 0.9,
+      careState: { stage: "complete" },
+      toJSON: () => ({ careAmount: 1, careState: { stage: "complete" } }),
+    },
+    careAmount: 0.8,
+    careState: { stage: "contact" },
+    toJSON: () => ({ careAmount: 1, careState: { stage: "complete" } }),
+  } as unknown as Parameters<typeof writeAppearance>[1];
+  const injectedChess = {
+    ...defaultChess,
+    boardTheme: "ice",
+    completed: 2,
+    careAmount: 0.7,
+    careState: { stage: "work" },
+    toJSON: () => ({ careAmount: 1, careState: { stage: "complete" } }),
+  } as unknown as Parameters<typeof writeChess>[1];
+
+  writeAppearance(storage, injectedAppearance);
+  writeChess(storage, injectedChess);
+
+  const storedAppearance = JSON.parse(storage.getItem(STORAGE_KEYS.preferences) ?? "null");
+  const storedChess = JSON.parse(storage.getItem(STORAGE_KEYS.chess) ?? "null");
+  assert.deepEqual(Object.keys(storedAppearance).sort(), [
+    "avatar",
+    "mode",
+    "scene",
+    "theme",
+  ]);
+  assert.deepEqual(Object.keys(storedAppearance.avatar).sort(), [
+    "faithAccessory",
+    "garment",
+    "glasses",
+    "hair",
+    "headwear",
+    "hearingSupport",
+    "height",
+    "lowVision",
+    "mobility",
+    "playbackSpeed",
+    "reducedMotion",
+    "skin",
+    "solidSurfaces",
+    "support",
+    "weight",
+  ]);
+  assert.deepEqual(Object.keys(storedChess).sort(), [
+    "boardTheme",
+    "completed",
+    "finishedRecorded",
+    "pgn",
+  ]);
+  assert.equal(JSON.stringify(storedAppearance).includes("care"), false);
+  assert.equal(JSON.stringify(storedChess).includes("care"), false);
+});
+
+test("the data inventory declares the leather-care run as memory-only", () => {
+  const careEntry = DATA_INVENTORY.find((entry) =>
+    entry.item.includes("leather-care run"),
+  );
+
+  assert.deepEqual(careEntry, {
+    item: "Current leather-care run, target, stage, contact state, and modeled application progress",
+    location: "Memory only",
+    retention: "Discarded on reload",
+  });
+  assert.deepEqual(Object.keys(STORAGE_KEYS).sort(), ["chess", "preferences"]);
 });

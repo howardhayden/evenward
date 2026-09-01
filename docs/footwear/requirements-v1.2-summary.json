@@ -1,0 +1,74 @@
+{
+  "version": "1.2",
+  "generatedAt": "2026-09-01",
+  "claimBoundary": "pre-production reference register; zero Verified requirements",
+  "composition": [
+    {
+      "path": "requirements-v1.0-pre-redteam.jsonl",
+      "rowCount": 97,
+      "sha256": "efdf627b85e62de28c956ed659bfdd5ec4dc1d646e1c043d23efbedf9dee8ea9",
+      "disposition": "preserved failed pre-red-team baseline"
+    },
+    {
+      "path": "requirements-v1.1-redteam-delta.jsonl",
+      "rowCount": 28,
+      "sha256": "61973c8ccd9291248a1eb61903ce5260d71319476930127d9a17963abc6015a0",
+      "disposition": "additive adversarial corrections"
+    },
+    {
+      "path": "requirements-v1.2-implementation-redteam-delta.jsonl",
+      "rowCount": 12,
+      "sha256": "e435dabb958d9441e6742e4d361cb4ea3acdf99e1c3f06f64e6906b3f15aa5d3",
+      "disposition": "additive implementation red-team corrections and blockers"
+    }
+  ],
+  "authorityPins": [
+    {
+      "source": "EVM-FOOTWEAR-1.0",
+      "pages": 20,
+      "sha256": "55f736db7b0bd2c6c32b97140c7d6400e03e2476a5deba2368168dcbf1905af9"
+    },
+    {
+      "source": "EVM-AVATAR-1.0",
+      "pages": 40,
+      "sha256": "f68e13d1d9bed87074454100229784b32827196738b25883661e9df63c5de647"
+    },
+    {
+      "source": "Evenward footwear care addendum v1.0 candidate",
+      "path": "evenward-footwear-care-addendum-v1.0-candidate.md",
+      "sha256": "ef73e7a6e2512950c21c938aa049acb4d5225fc91402f7c54f23e5e563244c39"
+    },
+    {
+      "source": "Evenward footwear care addendum v1.1 candidate",
+      "path": "evenward-footwear-care-addendum-v1.1-candidate.md",
+      "sha256": "ae3ba6ff6bcd0c4a7f58217ead9150c6956fd42a049dfbfc12d571ac95e1ad52"
+    }
+  ],
+  "mutableCareReferences": [
+    {
+      "url": "https://saphir.com/products/amiral-gloss",
+      "accessedAt": "2026-09-01",
+      "authority": "named-product profile only; current label and warnings take precedence"
+    },
+    {
+      "url": "https://uk.saphir.com/pages/bulling-high-shine-guide-detail",
+      "accessedAt": "2026-09-01",
+      "authority": "supporting sequence reference only"
+    }
+  ],
+  "rowCount": 137,
+  "uniqueIdCount": 137,
+  "dependencyGraphAcyclic": true,
+  "dependencyRoots": [
+    "EVW-FP-AUTH-001",
+    "EVW-FP-AUTH-006",
+    "EVW-FP-EVID-001"
+  ],
+  "statusCounts": {
+    "candidate-required": 95,
+    "inherited-blocker": 42
+  },
+  "verifiedCount": 0,
+  "productionUnlocked": false,
+  "currentRegisterSha256": "043e233b6596225623585a1ffaf04f1b977a655474478fcfd8cb1c86cebd6491"
+}

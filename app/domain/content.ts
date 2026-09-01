@@ -178,6 +178,7 @@ export const defaultChess: SavedChess = {
 export const navItems: { id: ViewId; label: string; mark: string }[] = [
   { id: "today", label: "Today", mark: "✦" },
   { id: "practice", label: "Practice", mark: "⌁" },
+  { id: "care", label: "Care", mark: "◒" },
   { id: "chess", label: "Chess", mark: "◇" },
   { id: "patterns", label: "Patterns", mark: "⌘" },
   { id: "understand", label: "Learn", mark: "≡" },

@@ -1,0 +1,92 @@
+{
+  "version": "1.3",
+  "generatedAt": "2026-09-01",
+  "claimBoundary": "author-approved source integration and public repository; pre-production reference; zero Verified requirements",
+  "composition": [
+    {
+      "path": "requirements-v1.0-pre-redteam.jsonl",
+      "rowCount": 97,
+      "sha256": "efdf627b85e62de28c956ed659bfdd5ec4dc1d646e1c043d23efbedf9dee8ea9",
+      "disposition": "preserved failed pre-red-team baseline"
+    },
+    {
+      "path": "requirements-v1.1-redteam-delta.jsonl",
+      "rowCount": 28,
+      "sha256": "61973c8ccd9291248a1eb61903ce5260d71319476930127d9a17963abc6015a0",
+      "disposition": "additive adversarial corrections"
+    },
+    {
+      "path": "requirements-v1.2-implementation-redteam-delta.jsonl",
+      "rowCount": 12,
+      "sha256": "e435dabb958d9441e6742e4d361cb4ea3acdf99e1c3f06f64e6906b3f15aa5d3",
+      "disposition": "additive implementation red-team corrections and blockers"
+    },
+    {
+      "path": "requirements-v1.3-author-integration-delta.jsonl",
+      "rowCount": 8,
+      "sha256": "c4a9f53fc0e8eb222853b0112a865db7e8de2275005364cb8bb5c4f546ad38e5",
+      "disposition": "additive author authority for source integration and a noncommercial public standalone repository"
+    }
+  ],
+  "authorityPins": [
+    {
+      "source": "EVM-FOOTWEAR-1.0",
+      "pages": 20,
+      "sha256": "55f736db7b0bd2c6c32b97140c7d6400e03e2476a5deba2368168dcbf1905af9"
+    },
+    {
+      "source": "EVM-AVATAR-1.0",
+      "pages": 40,
+      "sha256": "f68e13d1d9bed87074454100229784b32827196738b25883661e9df63c5de647"
+    },
+    {
+      "source": "Evenward footwear care addendum v1.0 candidate",
+      "path": "evenward-footwear-care-addendum-v1.0-candidate.md",
+      "sha256": "ef73e7a6e2512950c21c938aa049acb4d5225fc91402f7c54f23e5e563244c39"
+    },
+    {
+      "source": "Evenward footwear care addendum v1.1 candidate",
+      "path": "evenward-footwear-care-addendum-v1.1-candidate.md",
+      "sha256": "ae3ba6ff6bcd0c4a7f58217ead9150c6956fd42a049dfbfc12d571ac95e1ad52"
+    },
+    {
+      "source": "EVD-AUTHOR-SCS-2026-09-01",
+      "path": "author-integration-decision-2026-09-01.md",
+      "sha256": "6ee1dfab2806e97a69ddd49bb4e81a9f48540eff49aa7cfc38df0568bcb8ad5f"
+    }
+  ],
+  "mutableCareReferences": [
+    {
+      "url": "https://saphir.com/products/amiral-gloss",
+      "accessedAt": "2026-09-01",
+      "authority": "named-product profile only; current label and warnings take precedence"
+    },
+    {
+      "url": "https://uk.saphir.com/pages/bulling-high-shine-guide-detail",
+      "accessedAt": "2026-09-01",
+      "authority": "supporting sequence reference only"
+    }
+  ],
+  "rowCount": 145,
+  "uniqueIdCount": 145,
+  "dependencyGraphAcyclic": true,
+  "dependencyRoots": [
+    "EVW-FP-AUTH-001",
+    "EVW-FP-AUTH-006",
+    "EVW-FP-EVID-001"
+  ],
+  "statusCounts": {
+    "candidate-required": 103,
+    "inherited-blocker": 42
+  },
+  "verifiedCount": 0,
+  "productionUnlocked": false,
+  "integrationAuthority": {
+    "decision": "EVD-AUTHOR-SCS-2026-09-01",
+    "evenwardMainMergeAuthorized": true,
+    "standalonePublicRepositoryAuthorized": true,
+    "commercialUseAuthorized": false,
+    "productionReleaseAuthorized": false
+  },
+  "currentRegisterSha256": "3bbeb298744c03f2897d9ea53666d0c7a0c5fe0c52f8755c4b2b3a1ba18f9c8f"
+}

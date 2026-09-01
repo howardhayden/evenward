@@ -12,6 +12,13 @@ accessible interaction model, chess state, themes, and movement catalog are
 implemented. Its trainer illustrations and movement rendering remain in
 progress and must not be read as authoritative form instruction.
 
+The footwear-care work is an executable pre-production reference with zero
+Verified requirements. Its candidate authority, atomic register, adversarial
+corrections, preserved failures, and narrow author decision permitting source
+integration and a noncommercial public standalone repository live in
+[`footwear/`](footwear/README.md). Public distribution does not unlock
+production.
+
 ## Documentation map
 
 - [Product](PRODUCT.md) — positioning, audience, value, scope, and business
